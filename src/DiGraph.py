@@ -4,24 +4,32 @@ import GraphInterface
 
 class DiGraph(GraphInterface):
     """This abstract class represents an interface of a graph."""
+    def __init__(self):
+        self.modeChanges = 0
+        self.nodesOnGraph = 0
+        self.edgesOnGraph = 0
+        self.nodes = {int : Node}
+        self.edgesIn = {int : {int : Edge}}
+        self.edgesOut = {int : {int : Edge}}
 
     def v_size(self) -> int:
         """
         Returns the number of vertices in this graph
         @return: The number of vertices in this graph
         """
-        raise NotImplementedError
+        return self.nodesOnGraph
 
     def e_size(self) -> int:
         """
         Returns the number of edges in this graph
         @return: The number of edges in this graph
         """
-        raise NotImplementedError
+        return self.edgesOnGraph
 
     def get_all_v(self) -> dict:
-        """return a dictionary of all the nodes in the Graph, each node is represented using apair  (key, node_data)
-        """
+        """return a dictionary of all the nodes in the Graph,
+        each node is represented using a pair  (key, node_data)"""
+        return  self.nodes
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         """return a dictionary of all the nodes connected to (into) node_id ,
@@ -32,6 +40,7 @@ class DiGraph(GraphInterface):
         """return a dictionary of all the nodes connected from node_id , each node is represented using a pair (key,
         weight)
         """
+        return self.edgesOut.get(id1)
 
     def get_mc(self) -> int:
         """
@@ -51,6 +60,7 @@ class DiGraph(GraphInterface):
 
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
+        self.edgesOut
 
         raise NotImplementedError
 
@@ -63,7 +73,10 @@ class DiGraph(GraphInterface):
 
         Note: if the node id already exists the node will not be added
         """
-        raise NotImplementedError
+        if node_id not in self.nodes.keys():
+            self.nodes['Type node_id'] = 'Type Node'(self,node_id,0,False)
+            return True
+        return False
 
     def remove_node(self, node_id: int) -> bool:
         """
@@ -86,5 +99,20 @@ class DiGraph(GraphInterface):
         """
         raise NotImplementedError
 
+
+    """data structure to store graph edges"""
+class Edge:
+    def __init__(self, src, dest, weight):
+        self.src = src
+        self.dest = dest
+        self.weight = weight
+
+
+    """ data structure for adjacency list node"""
+class Node:
+    def __init__(self, node_id, total_Weight, visited):
+        self.node_id = node_id
+        self.total_Weight = total_Weight
+        self.visited = visited
 
 
