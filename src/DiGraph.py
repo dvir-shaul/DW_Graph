@@ -35,12 +35,13 @@ class DiGraph(GraphInterface):
         """return a dictionary of all the nodes connected to (into) node_id ,
         each node is represented using a pair (key, weight)
          """
+        return self.edgesIn.get['Type [int]':id1]
 
     def all_out_edges_of_node(self, id1: int) -> dict:
         """return a dictionary of all the nodes connected from node_id , each node is represented using a pair (key,
         weight)
         """
-        return self.edgesOut.get(id1)
+        return self.edgesOut.get['Type [int]':id1]
 
     def get_mc(self) -> int:
         """
@@ -60,9 +61,13 @@ class DiGraph(GraphInterface):
 
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
-        self.edgesOut
-
-        raise NotImplementedError
+        if id2 not in self.edgesOut.values():
+            e = Edge(id1,id2,weight)
+            self.edgesOut['Type [int]':id1]={id2,e}
+            self.edgesIn['Type [int]':id2]={id1,e}
+            self.edgesOnGraph = self.edgesOnGraph +1
+            return True
+        return False
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
         """
@@ -74,7 +79,9 @@ class DiGraph(GraphInterface):
         Note: if the node id already exists the node will not be added
         """
         if node_id not in self.nodes.keys():
-            self.nodes['Type node_id'] = 'Type Node'(self,node_id,0,False)
+            n = Node(node_id,0.0,False)
+            self.nodes['Type [int]':node_id] = n
+            self.nodesOnGraph = self.nodesOnGraph +1
             return True
         return False
 
@@ -86,7 +93,13 @@ class DiGraph(GraphInterface):
 
         Note: if the node id does not exists the function will do nothing
         """
-        raise NotImplementedError
+
+        "need to fix"
+        if node_id in self.nodes:
+            self.nodes.pop(node_id)
+            self.nodesOnGraph = self.nodesOnGraph - 1
+
+        return False
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
         """
@@ -97,8 +110,11 @@ class DiGraph(GraphInterface):
 
         Note: If such an edge does not exists the function will do nothing
         """
-        raise NotImplementedError
-
+        if node_id2 in self.edgesOut.get(node_id1).keys():
+            self.edgesOut.get(node_id1).pop(node_id2)
+            self.edgesOnGraph = self.edgesOnGraph -1
+            return True
+        return False
 
     """data structure to store graph edges"""
 class Edge:
@@ -110,9 +126,9 @@ class Edge:
 
     """ data structure for adjacency list node"""
 class Node:
-    def __init__(self, node_id, total_Weight, visited):
+    def __init__(self, node_id, total_weight, visited):
         self.node_id = node_id
-        self.total_Weight = total_Weight
+        self.total_weight = total_weight
         self.visited = visited
 
 
