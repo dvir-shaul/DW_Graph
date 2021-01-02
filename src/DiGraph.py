@@ -65,7 +65,7 @@ class DiGraph(GraphInterface):
             e = Edge(id1,id2,weight)
             self.edgesOut['Type [int]':id1]={id2,e}
             self.edgesIn['Type [int]':id2]={id1,e}
-            self.edgesOnGraph = self.edgesOnGraph +1
+            self.edgesOnGraph += 1
             return True
         return False
 
@@ -81,7 +81,7 @@ class DiGraph(GraphInterface):
         if node_id not in self.nodes.keys():
             n = Node(node_id,0.0,False)
             self.nodes['Type [int]':node_id] = n
-            self.nodesOnGraph = self.nodesOnGraph +1
+            self.nodesOnGraph += 1 # self.nodesOnGraph +1
             return True
         return False
 
@@ -94,10 +94,16 @@ class DiGraph(GraphInterface):
         Note: if the node id does not exists the function will do nothing
         """
 
-        "need to fix"
+
         if node_id in self.nodes:
-            self.nodes.pop(node_id)
-            self.nodesOnGraph = self.nodesOnGraph - 1
+            for key in self.edgesOut.get['Type [int]':node_id] : #if not work use this -> self.edgesOut.get(node_id)
+                self.remove_edge(node_id,key)
+                del self.edgesOut.get(key)['Type [int]' : node_id]
+                self.edgesOnGraph -=1
+            self.nodesOnGraph -= 1
+
+
+            del self.nodes['Type [int]' : node_id]
 
         return False
 
@@ -111,12 +117,16 @@ class DiGraph(GraphInterface):
         Note: If such an edge does not exists the function will do nothing
         """
         if node_id2 in self.edgesOut.get(node_id1).keys():
+            del self.edgesOut.get(node_id1)['Type [int]': node_id2]
             self.edgesOut.get(node_id1).pop(node_id2)
-            self.edgesOnGraph = self.edgesOnGraph -1
+            self.edgesOnGraph -= 1
             return True
         return False
 
+
+
     """data structure to store graph edges"""
+
 class Edge:
     def __init__(self, src, dest, weight):
         self.src = src

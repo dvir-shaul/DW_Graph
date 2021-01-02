@@ -4,7 +4,6 @@ from typing import List
 
 class GraphAlgo(GraphAlgoInterface):
     """This abstract class represents an interface of a graph."""
-
     def get_graph(self) -> GraphInterface:
         """
         :return: the directed graph on which the algorithm works on.
