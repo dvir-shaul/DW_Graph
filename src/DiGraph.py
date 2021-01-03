@@ -1,16 +1,34 @@
-import GraphInterface
+from GraphInterface import GraphInteface
 
 
 
-class DiGraph(GraphInterface):
+class DiGraph(GraphInteface):
     """This abstract class represents an interface of a graph."""
     def __init__(self):
         self.modeChanges = 0
         self.nodesOnGraph = 0
         self.edgesOnGraph = 0
-        self.nodes = {int : Node}
-        self.edgesIn = {int : {int : Edge}}
-        self.edgesOut = {int : {int : Edge}}
+        self.nodes = {}
+        self.edgesIn = {}
+        self.edgesOut = {}
+
+    def __repr__(self):
+        lines='Nodes: {'
+        for key in self.nodes:
+            lines+=' ' +str(key)+ ' ,'
+        lines+=' }\n'
+
+        lines += 'EdgesOut: {'
+        for key,value in self.edgesOut.items():
+            print('key '+ str(key))
+            print('value'+ str(value))
+
+            lines += ' ' + str(key) + ' : '
+            for neighbour in self.edgesOut[key]:
+                lines+= ' '+ str(neighbour)+ ' ,'
+        lines += ' } '
+
+        return lines
 
     def v_size(self) -> int:
         """
@@ -35,13 +53,13 @@ class DiGraph(GraphInterface):
         """return a dictionary of all the nodes connected to (into) node_id ,
         each node is represented using a pair (key, weight)
          """
-        return self.edgesIn.get['Type [int]':id1]
+        return self.edgesIn.get[id1]
 
     def all_out_edges_of_node(self, id1: int) -> dict:
         """return a dictionary of all the nodes connected from node_id , each node is represented using a pair (key,
         weight)
         """
-        return self.edgesOut.get['Type [int]':id1]
+        return self.edgesOut.get[id1]
 
     def get_mc(self) -> int:
         """
@@ -49,7 +67,7 @@ class DiGraph(GraphInterface):
         on every change in the graph state - the MC should be increased
         @return: The current version of this graph.
         """
-        raise NotImplementedError
+        return self.modeChanges
 
     def add_edge(self, id1: int, id2: int, weight: float) -> bool:
         """
@@ -61,13 +79,16 @@ class DiGraph(GraphInterface):
 
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
-        if id2 not in self.edgesOut.values():
-            e = Edge(id1,id2,weight)
-            self.edgesOut['Type [int]':id1]={id2,e}
-            self.edgesIn['Type [int]':id2]={id1,e}
-            self.edgesOnGraph += 1
+        try:
+            self.edgesOut[id1][id2]
+            return False
+        except KeyError:
+            e = Edge(id1, id2, weight)
+            self.edgesOut[id1].update({id2 : e})
+            self.edgesIn[id2].update({id1 : e})
+            self.edgesOnGraph = self.edgesOnGraph + 1
             return True
-        return False
+
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
         """
@@ -80,7 +101,9 @@ class DiGraph(GraphInterface):
         """
         if node_id not in self.nodes.keys():
             n = Node(node_id,0.0,False)
-            self.nodes['Type [int]':node_id] = n
+            self.edgesOut[node_id] ={}
+            self.edgesIn[node_id] = {}
+            self.nodes[node_id] = n
             self.nodesOnGraph += 1 # self.nodesOnGraph +1
             return True
         return False
@@ -96,16 +119,24 @@ class DiGraph(GraphInterface):
 
 
         if node_id in self.nodes:
-            for key in self.edgesOut.get['Type [int]':node_id] : #if not work use this -> self.edgesOut.get(node_id)
-                self.remove_edge(node_id,key)
-                del self.edgesOut.get(key)['Type [int]' : node_id]
-                self.edgesOnGraph -=1
+            for key in self.edgesOut: #Go over keys
+                try:
+                    del self.edgesOut[key][node_id] # if you can find the key delete it.
+                    self.edgesOnGraph -=1   # for every key deleted decrement edgesOnGraph
+                except KeyError:
+                    pass      #If you can't find the key just keep goin
+
+            del self.edgesOut[node_id]
+            del self.edgesIn[node_id]
+            del self.nodes[node_id]
             self.nodesOnGraph -= 1
-
-
-            del self.nodes['Type [int]' : node_id]
-
+            return True
         return False
+
+
+
+
+
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
         """
@@ -116,12 +147,16 @@ class DiGraph(GraphInterface):
 
         Note: If such an edge does not exists the function will do nothing
         """
-        if node_id2 in self.edgesOut.get(node_id1).keys():
-            del self.edgesOut.get(node_id1)['Type [int]': node_id2]
-            self.edgesOut.get(node_id1).pop(node_id2)
+        try:
+            self.edgesOut[node_id1][node_id2] #Check if we Have key , If we don't we get Key Error.
+            del self.edgesOut[node_id1][node_id2]
+            del self.edgesIn[node_id2][node_id1]
             self.edgesOnGraph -= 1
             return True
-        return False
+
+        except KeyError:
+            return False
+
 
 
 
@@ -133,6 +168,9 @@ class Edge:
         self.dest = dest
         self.weight = weight
 
+    def __repr__(self):
+        return repr('[src : ' + str(self.src) + ' dest : ' + str(self.dest) + ' Weight : ' + str(self.weight)+ ' ] ')
+
 
     """ data structure for adjacency list node"""
 class Node:
@@ -140,5 +178,8 @@ class Node:
         self.node_id = node_id
         self.total_weight = total_weight
         self.visited = visited
+
+    def __repr__(self):
+        return repr('Key : ' + str(self.node_id))
 
 
