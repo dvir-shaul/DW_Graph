@@ -133,6 +133,7 @@ class DiGraph(GraphInteface):
             del self.edgesIn[node_id]
             del self.nodes[node_id]
             self.nodesOnGraph -= 1
+            self.modeChanges += 1
             return True
         return False
 
@@ -179,10 +180,4 @@ class Node:
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> 4f217407c170f031076d9943114754c647f8b27a
