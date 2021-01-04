@@ -1,13 +1,25 @@
+import heapq
+import sys
+
 import GraphInterface
-import GraphAlgoInterface
+from DiGraph import DiGraph
+from DiGraph import Edge
+from DiGraph import Node
+from GraphInterface import GraphInteface
+
+from GraphAlgoInterface import GraphAlgoInterface
 from typing import List
 
 class GraphAlgo(GraphAlgoInterface):
     """This abstract class represents an interface of a graph."""
+    def __init__(self,graph):
+        self.dw_graph=graph
+
     def get_graph(self) -> GraphInterface:
         """
         :return: the directed graph on which the algorithm works on.
         """
+        return self.dw_graph
 
     def load_from_json(self, file_name: str) -> bool:
         """
@@ -48,7 +60,28 @@ class GraphAlgo(GraphAlgoInterface):
         More info:
         https://en.wikipedia.org/wiki/Dijkstra's_algorithm
         """
-        raise NotImplementedError
+
+        node_size=self.dw_graph.v_size()
+        if(id1==id2):
+            return (0,[id1])
+        for n in self.dw_graph.get_all_v() :
+            if(n.node_id!=id1):
+                n.total_weight=sys.maxsize
+                n.visited=0
+        max_heap=[(n.total_weight,n) for n in self.dw_graph.get_all_v()]
+        heapq.heapify(max_heap)
+        while len(max_heap)
+            node=heapq.heappop(max_heap)
+            current=node[1]
+            current.visited=1
+
+            for neighbour in self.dw_graph.all_in_edges_of_node():
+        
+
+
+
+
+
 
     def connected_component(self, id1: int) -> list:
         """
