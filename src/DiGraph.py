@@ -179,10 +179,4 @@ class Node:
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> 4f217407c170f031076d9943114754c647f8b27a
