@@ -100,7 +100,7 @@ class DiGraph(GraphInteface):
         Note: if the node id already exists the node will not be added
         """
         if node_id not in self.nodes.keys():
-            n = Node(node_id, 0.0, False)
+            n = Node(node_id, 0.0, False,-1)
             self.edgesOut[node_id] = {}
             self.edgesIn[node_id] = {}
             self.nodes[node_id] = n
@@ -173,10 +173,14 @@ class Edge:
 
 
 class Node:
-    def __init__(self, node_id, total_weight, visited):
+    def __init__(self, node_id, distance, visited,parent):
         self.node_id = node_id
-        self.total_weight = total_weight
+        self.distance = distance
         self.visited = visited
+        self.parent = parent
+
+    def __lt__(self, other):
+        return self.distance<other.distance
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))
