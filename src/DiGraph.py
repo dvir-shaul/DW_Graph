@@ -79,12 +79,14 @@ class DiGraph(GraphInteface):
 
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
+
         if id1 not in self.nodes or id2 not in self.nodes:
+
             return False
         try:
             self.edgesOut[id1][id2]
             return False
-        except KeyError:
+        except:
             e = Edge(id1, id2, weight)
             self.edgesOut[id1].update({id2: e})
             self.edgesIn[id2].update({id1: e})
@@ -125,9 +127,6 @@ class DiGraph(GraphInteface):
                 try:
                     self.remove_edge(node_id, key)
                     self.remove_edge(key,node_id)
-                    # del self.edgesOut[node_id][key] # if you can find the key delete it.
-                    # del self.edgesIn[key][node_id]
-                    # self.edgesOnGraph -= 1   # for every key deleted decrement edgesOnGraph
                 except KeyError:
                     pass  # If you can't find the key just keep goin
 
@@ -175,7 +174,7 @@ class Edge:
 
 
 class Node:
-    def __init__(self, node_id, distance, visited,parent):
+    def __init__(self, node_id, distance, visited, parent):
         self.node_id = node_id
         self.distance = distance
         self.visited = visited

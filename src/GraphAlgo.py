@@ -36,6 +36,7 @@ class GraphAlgo(GraphAlgoInterface):
         try:
             with open(file_name, "r") as f:
                 dict_graph = json.load(f)
+
                 self.dw_graph.nodes = {}
                 self.dw_graph.all_in_edges_of_node = {}
                 self.dw_graph.all_out_edges_of_node = {}
@@ -55,6 +56,7 @@ class GraphAlgo(GraphAlgoInterface):
         except IOError as e:
             print(e)
         return False
+
 
     def bfs(self, start_node: int, flag: bool) -> bool:
         """
@@ -83,6 +85,7 @@ class GraphAlgo(GraphAlgoInterface):
                         node_list.append(e.src)
 
         return node_list
+
 
     def save_to_json(self, file_name: str) -> bool:
         """
@@ -114,7 +117,6 @@ class GraphAlgo(GraphAlgoInterface):
         @param id1: The start node id
         @param id2: The end node id
         @return: The distance of the path, the path as a list
-
         Example:
 #      >>> from GraphAlgo import GraphAlgo
 #       >>> g_algo = GraphAlgo()
@@ -127,13 +129,14 @@ class GraphAlgo(GraphAlgoInterface):
 #        (1, [0, 1])
 #        >>> g_algo.shortestPath(0,2)
 #        (5, [0, 1, 2])
-
         More info:
         https://en.wikipedia.org/wiki/Dijkstra's_algorithm
         """
 
         if id1 == id2:
             return 0, [id1]
+        if id1 not in self.dw_graph.nodes or id2 not in self.dw_graph.nodes:
+            return -1, []
 
         for n in self.dw_graph.get_all_v().values():  # Set all distance to be max value.
             if n.node_id != id1:
@@ -184,22 +187,19 @@ class GraphAlgo(GraphAlgoInterface):
         list2=self.bfs(id1,True)
         return list(set(list1) & set(list2))
 
-
-
     def connected_components(self) -> List[list]:
         """
         Finds all the Strongly Connected Component(SCC) in the graph.
         @return: The list all SCC
         """
-        counter=0
         mega_list=[]
         for n in self.dw_graph.get_all_v().values():
-            print("key is" ,n.node_id)
-            if counter < self.dw_graph.v_size():
-                counter=counter+len(self.connected_component(n.node_id))
-                mega_list.append(self.connected_component(n.node_id))
-
-        return mega_list
+            mega_list.append(self.connected_component(n.node_id))
+        res = []
+        for i in mega_list:
+            if i not in res:
+                res.append(i)
+        return res
 
     def plot_graph(self) -> None:
         """
@@ -216,3 +216,31 @@ class GraphAlgo(GraphAlgoInterface):
         plt.title("The title of the graph")
         plt.legend()
         plt.show()
+
+
+    def bfs(self, start_node: int, flag: bool) -> bool:
+        """
+        Performs breathd first search on the graph.
+        """
+        for n in self.dw_graph.get_all_v().values():
+            n.visited = False
+        queue = [self.dw_graph.nodes[start_node]]
+        self.dw_graph.nodes[start_node].visited=True
+
+        node_list=[start_node]
+        while queue:
+            current = queue.pop()
+            if not flag:
+                for e in self.dw_graph.all_out_edges_of_node(current.node_id).values():
+                    if not self.dw_graph.nodes[e.dest].visited :
+                        self.dw_graph.nodes[e.dest].visited=True
+                        queue.append(self.dw_graph.nodes[e.dest])
+                        node_list.append(e.dest)
+            else:
+                for e in self.dw_graph.all_in_edges_of_node(current.node_id).values():
+                    if not self.dw_graph.nodes[e.src].visited :
+                        self.dw_graph.nodes[e.src].visited=True
+                        queue.append(self.dw_graph.nodes[e.src])
+                        node_list.append(e.src)
+
+        return node_list
