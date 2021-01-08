@@ -49,6 +49,7 @@ def check0():
     print(g.all_out_edges_of_node(1))
     g_algo = GraphAlgo(g)
     print(g_algo.shortest_path(0, 3))
+    g_algo.plot_graph()
 
 def check1():
     """
@@ -86,4 +87,4 @@ def check2():
     g_algo.plot_graph()
 
 if __name__ == '__main__':
-    check()
+    check0()
