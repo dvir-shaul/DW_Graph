@@ -172,14 +172,14 @@ class Edge:
 
 
 class Node:
-    def __init__(self, node_id, distance, visited,parent):
+    def __init__(self, node_id, distance, visited, parent):
         self.node_id = node_id
         self.distance = distance
         self.visited = visited
         self.parent = parent
 
     def __lt__(self, other):
-        return self.distance<other.distance
+        return self.distance < other.distance
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))
