@@ -40,16 +40,15 @@ class GraphAlgo(GraphAlgoInterface):
                 self.dw_graph.nodes = {}
                 self.dw_graph.all_in_edges_of_node = {}
                 self.dw_graph.all_out_edges_of_node = {}
+                self.dw_graph.mode_changes = 0
 
                 for nodes in dict_graph["Nodes"]:
-                    position = nodes["pos"].split(",") # Give a string of the position
-                    pos_tuple=tuple(float(i) for i in position)
-                    id = nodes["id"] # Give a the node id
-                    self.dw_graph.add_node(id, pos_tuple)
+                    self.dw_graph.add_node(nodes["id"], nodes["pos"])
+
                 for edges in dict_graph["Edges"]:
-                    src=edges["src"]
-                    weight=edges["w"]
-                    dest=edges["dest"]
+                    src = edges["src"]
+                    weight = edges["w"]
+                    dest = edges["dest"]
                     self.dw_graph.add_edge(src,dest,weight)
             return True
 
@@ -57,54 +56,24 @@ class GraphAlgo(GraphAlgoInterface):
             print(e)
         return False
 
-
-    def bfs(self, start_node: int, flag: bool) -> bool:
-        """
-        Performs breadth first search on the graph.
-        if flag is true perform the bfs as if the graph is reversed.
-        """
-        for n in self.dw_graph.get_all_v().values():
-            n.visited = False
-        queue = [self.dw_graph.nodes[start_node]]
-        self.dw_graph.nodes[start_node].visited=True
-
-        node_list=[start_node]
-        while queue:
-            current = queue.pop()
-            if not flag:
-                for e in self.dw_graph.all_out_edges_of_node(current.node_id).values():
-                    if not self.dw_graph.nodes[e.dest].visited :
-                        self.dw_graph.nodes[e.dest].visited=True
-                        queue.append(self.dw_graph.nodes[e.dest])
-                        node_list.append(e.dest)
-            else:
-                for e in self.dw_graph.all_in_edges_of_node(current.node_id).values():
-                    if not self.dw_graph.nodes[e.src].visited :
-                        self.dw_graph.nodes[e.src].visited=True
-                        queue.append(self.dw_graph.nodes[e.src])
-                        node_list.append(e.src)
-
-        return node_list
-
-
     def save_to_json(self, file_name: str) -> bool:
         """
         Saves the graph in JSON format to a file
         @param file_name: The path to the out file
         @return: True if the save was successful, Flase o.w.
         """
-        Nodes=[]
-        Edges=[]
-        for k,v in self.dw_graph.get_all_v().items():
+        nodes = []
+        edges = []
+        for k, v in self.dw_graph.get_all_v().items():
             a_node={"pos" : 0 , "id" : k}
-            Nodes.append(a_node)
+            nodes.append(a_node)
             for edge in self.dw_graph.all_out_edges_of_node(k).values():
-                an_edge={"src" : edge.src, "w" : edge.weight, "dest" : edge.dest}
-                Edges.append(an_edge)
-        new_graph={"Edges" : Edges, "Nodes" : Nodes}
+                an_edge={"src" : edge.src, "w": edge.weight, "dest" : edge.dest}
+                edges.append(an_edge)
+        new_graph = {"Edges" : edges, "Nodes" : nodes}
         try:
-            with open(file_name ,"w") as f:
-                json.dump(new_graph,indent=4,fp=f)
+            with open(file_name, "w") as f:
+                json.dump(new_graph, indent=4, fp=f)
             return True
 
         except Exception as e:
