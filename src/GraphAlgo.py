@@ -32,18 +32,24 @@ class GraphAlgo(GraphAlgoInterface):
         @param file_name: The path to the json file
         @returns True if the loading was successful, False o.w.
         """
-        new_nodes = {}
-        new_edgesIn = {}
-        new_edgesOut = {}
+
         try:
             with open(file_name, "r") as f:
                 dict_graph = json.load(f)
-                for k in dict_graph["Nodes"]:
-                    position = k["pos"]
-                    id = k["id"]
-                    node = Node(int(id), sys.maxsize, 0, -1)
+                self.dw_graph.nodes = {}
+                self.dw_graph.all_in_edges_of_node = {}
+                self.dw_graph.all_out_edges_of_node = {}
 
-                    self.vehicles = new_vehicle_dict
+                for nodes in dict_graph["Nodes"]:
+                    position = nodes["pos"].split(",") # Give a string of the position
+                    pos_tuple=tuple(float(i) for i in position)
+                    id = nodes["id"] # Give a the node id
+                    self.dw_graph.add_node(id, pos_tuple)
+                for edges in dict_graph["Edges"]:
+                    src=edges["src"]
+                    weight=edges["w"]
+                    dest=edges["dest"]
+                    self.dw_graph.add_edge(src,dest,weight)
             return True
 
         except IOError as e:
@@ -52,7 +58,8 @@ class GraphAlgo(GraphAlgoInterface):
 
     def bfs(self, start_node: int, flag: bool) -> bool:
         """
-        Performs breathd first search on the graph.
+        Performs breadth first search on the graph.
+        if flag is true perform the bfs as if the graph is reversed.
         """
         for n in self.dw_graph.get_all_v().values():
             n.visited = False
@@ -83,11 +90,18 @@ class GraphAlgo(GraphAlgoInterface):
         @param file_name: The path to the out file
         @return: True if the save was successful, Flase o.w.
         """
+        Nodes=[]
+        Edges=[]
+        for k,v in self.dw_graph.get_all_v().items():
+            a_node={"pos" : 0 , "id" : k}
+            Nodes.append(a_node)
+            for edge in self.dw_graph.all_out_edges_of_node(k).values():
+                an_edge={"src" : edge.src, "w" : edge.weight, "dest" : edge.dest}
+                Edges.append(an_edge)
+        new_graph={"Edges" : Edges, "Nodes" : Nodes}
         try:
-            graph = json.dumps(self.dw_graph, default, indent=4)
-            f = open(file_name, "w")
-            f.write(vehicles_json)
-            f.close()
+            with open(file_name ,"w") as f:
+                json.dump(new_graph,indent=4,fp=f)
             return True
 
         except Exception as e:

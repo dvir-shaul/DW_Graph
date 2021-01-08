@@ -79,6 +79,8 @@ class DiGraph(GraphInteface):
 
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
+        if id1 not in self.nodes or id2 not in self.nodes:
+            return False
         try:
             self.edgesOut[id1][id2]
             return False
@@ -180,7 +182,7 @@ class Node:
         self.parent = parent
 
     def __lt__(self, other):
-        return self.distance<other.distance
+        return self.distance < other.distance
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))

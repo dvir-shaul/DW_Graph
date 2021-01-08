@@ -1,6 +1,9 @@
+import unittest
+
 from DiGraph import DiGraph
 from unittest import TestCase
 from GraphAlgo import GraphAlgo
+
 
 
 class TestDiGraph(TestCase):
@@ -47,3 +50,21 @@ class TestDiGraph(TestCase):
         g.remove_edge(0, 1)
         self.assertEqual(1, g.e_size())
 
+    def test_e_size(self):
+        g = DiGraph()
+        self.assertEqual(0, g.e_size())
+        g.add_node(0)
+        g.add_node(1)
+        g.add_node(2)
+        g.add_edge(0, 1, 24)
+        self.assertEqual(1, g.e_size())
+        g.remove_node(0)
+        self.assertEqual(0, g.e_size())
+        g.add_edge(0, 1, 0.5)
+        self.assertEqual(0, g.e_size())
+        g.add_edge(2, 1, 1.5)
+        g.add_edge(1, 2, 2.5)
+        self.assertEqual(2, g.e_size())
+
+#if __name__ == '__main__':
+  #  unittest.main()
