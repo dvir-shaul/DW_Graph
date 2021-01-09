@@ -106,7 +106,7 @@ class DiGraph(GraphInteface):
         Note: if the node id already exists the node will not be added
         """
         if node_id not in self.nodes.keys():
-            n = Node(node_id, 0.0, False, -1, None)
+            n = Node(node_id, 0.0, False, -1, pos)
             self.edges_out[node_id] = {}
             self.edges_in[node_id] = {}
             self.nodes[node_id] = n
@@ -160,18 +160,18 @@ class DiGraph(GraphInteface):
         except KeyError:
             return False
 
-    def __eq__(self, other):
-        if len(self.nodes) != len(other.nodes):
-            return False
-        if len(self.edges_out) != len(other.edges_out):
-            return False
-        for node in self.nodes:
-            if not other.nodes.__contains__(node):
-                return False
-        for edge in self.edges_out:
-            if not other.edges_out.__contains__(edge):
-                return False
-        return True
+  # def __eq__(self, other):
+   #     if len(self.nodes) != len(other.nodes):
+    #        return False
+     #   if len(self.edges_out) != len(other.edges_out):
+      #      return False
+       # for node in self.nodes:
+        #    if not other.nodes.__contains__(node):
+         #       return False
+        #for edge in self.edges_out:
+         #   if not other.edges_out.__contains__(edge):
+          #      return False
+        #return True
 
     """data structure to store graph edges"""
 
