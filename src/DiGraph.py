@@ -30,6 +30,9 @@ class DiGraph(GraphInteface):
 
         return lines
 
+    def get_nodes(self, id1: int) -> dict:
+        return self.nodes[id1]
+
     def v_size(self) -> int:
         """
         Returns the number of vertices in this graph
@@ -103,7 +106,7 @@ class DiGraph(GraphInteface):
         Note: if the node id already exists the node will not be added
         """
         if node_id not in self.nodes.keys():
-            n = Node(node_id, 0.0, False, -1)
+            n = Node(node_id, 0.0, False, -1, None)
             self.edges_out[node_id] = {}
             self.edges_in[node_id] = {}
             self.nodes[node_id] = n
@@ -186,11 +189,12 @@ class Edge:
 
 
 class Node:
-    def __init__(self, node_id, distance, visited, parent):
+    def __init__(self, node_id, distance, visited, parent, position):
         self.node_id = node_id
         self.distance = distance
         self.visited = visited
         self.parent = parent
+        self.position = position
 
     def __lt__(self, other):
         return self.distance < other.distance

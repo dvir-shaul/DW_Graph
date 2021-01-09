@@ -9,7 +9,7 @@ class TestDiGraph(TestCase):
         g.add_node(0)
         g.add_node(1)
         g.add_node(2)
-        self.assertEqual(3, g.get_mc())  # #
+        self.assertEqual(3, g.get_mc())
         g.remove_node(0)
         self.assertEqual(4, g.get_mc())
 

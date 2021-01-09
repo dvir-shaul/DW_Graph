@@ -1,4 +1,5 @@
 import heapq
+import random
 import sys
 import json
 
@@ -177,15 +178,39 @@ class GraphAlgo(GraphAlgoInterface):
         Otherwise, they will be placed in a random but elegant manner.
         @return: None
         """
-        x_vals = [1, 2, 3, 4]
-        y_vals = [1, 4, 9, 16]
-        plt.plot(x_vals, y_vals, label="My first plot :)")
+
+        nodes_on_graph = self.dw_graph.get_all_v()
+        for k, v in nodes_on_graph.items():
+            if v.position is None:
+                x_rand = random.uniform(0.5, self.dw_graph.v_size())
+                y_rand = random.uniform(0.5, self.dw_graph.v_size())
+                v.position = (x_rand, y_rand)
+
+        x_vals = []
+        y_vals = []
+        n = list(nodes_on_graph.keys())
+        for k, v in nodes_on_graph.items():  # draw nodes
+            x_vals.append(v.position[0])
+            y_vals.append(v.position[1])
+
+        plt.plot(x_vals, y_vals, 'ro', label="My first plot :)")
+
+        for i, txt in enumerate(n):
+            plt.annotate(txt, (x_vals[i] - 0.04, y_vals[i] + 0.04))
+
+        for n in nodes_on_graph:
+            n1 = self.dw_graph.get_nodes(n)
+            x = n1.position[0]
+            y = n1.position[1]
+            for r in self.dw_graph.all_out_edges_of_node(n):
+                dx = self.dw_graph.get_nodes(r).position[0]
+                dy = self.dw_graph.get_nodes(r).position[1]
+                plt.arrow(x, y, dx - x, dy - y, head_width=0.04, length_includes_head=True)
+
         plt.xlabel("x axis ")
         plt.ylabel("y axis ")
         plt.title("The title of the graph")
-        plt.legend()
         plt.show()
-
 
     def bfs(self, start_node: int, flag: bool) -> bool:
         """
