@@ -83,7 +83,7 @@ class DiGraph(GraphInteface):
         Note: If the edge already exists or one of the nodes dose not exists the functions will do nothing
         """
 
-        if id1 not in self.nodes or id2 not in self.nodes:
+        if id1 not in self.nodes or id2 not in self.nodes or weight<0 or id1==id2:
             return False
         try:
             self.edges_out[id1][id2]

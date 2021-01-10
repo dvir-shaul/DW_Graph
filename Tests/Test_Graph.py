@@ -78,5 +78,15 @@ class TestDiGraph(TestCase):
         g.add_edge(1, 2, 2.5)
         self.assertEqual(2, g.e_size())
 
+    def graph_creator(self, v,e,is_connected,num_of_components,seed):
+        g=DiGraph()
+        for n in range(v):
+            g.add_node(n)
+        for i in range(e):
+            g.add_edge(i,i+1,0)
+            g.add_edge(i+1,i,0)
+
+        return g;
+
 #if __name__ == '__main__':
   #  unittest.main()
