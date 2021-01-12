@@ -1,5 +1,6 @@
 from DiGraph import DiGraph
 from GraphAlgo import GraphAlgo
+from Tests import Test_Graph
 
 
 def check():
@@ -84,4 +85,4 @@ def check2():
 
 
 if __name__ == '__main__':
-    check()
+    Test_Graph()

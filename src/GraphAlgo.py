@@ -125,10 +125,12 @@ class GraphAlgo(GraphAlgoInterface):
                 n.distance = sys.maxsize
                 n.visited = 0
         path = []
+        min_heap=[]
         self.dw_graph.nodes[id1].distance = 0
-        min_heap = [(n.distance, n) for n in
-                    self.dw_graph.get_all_v().values()]  # Create ordered pairs in the min heap.
-        heapq.heapify(min_heap)  # heapify to maintain the minimum
+        #min_heap = [(n.distance, n) for n in
+        #            self.dw_graph.get_all_v().values()]  # Create ordered pairs in the min heap.
+        heapq.heappush(min_heap,(self.dw_graph.nodes[id1].distance,self.dw_graph.nodes[id1]))
+        #heapq.heapify(min_heap)  # heapify to maintain the minimum
 
         while len(min_heap):
             node = heapq.heappop(min_heap)  # pop the smallest item
@@ -139,12 +141,12 @@ class GraphAlgo(GraphAlgoInterface):
                 if self.dw_graph.nodes[neighbour.dest].visited == 0:  # if we didn't visit this neighbour
                     new_dist = current.distance + neighbour.weight  # Set new distance
 
-                    if self.dw_graph.nodes[
-                        neighbour.dest].distance > new_dist:  # If new distance is smaller , update it.
+                    if self.dw_graph.nodes[neighbour.dest].distance > new_dist:  # If new distance is smaller , update it.
                         self.dw_graph.nodes[neighbour.dest].distance = new_dist
-                        min_heap.append((self.dw_graph.nodes[neighbour.dest].distance,
+
+                        heapq.heappush(min_heap,(self.dw_graph.nodes[neighbour.dest].distance,
                                          self.dw_graph.nodes[neighbour.dest]))  # add to priority queue
-                        heapq.heapify(min_heap)  # Heapify min.
+                        #heapq.heapify(min_heap)  # Heapify min.
                         self.dw_graph.nodes[neighbour.dest].parent = current.node_id  # Update parent
 
         if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can't reach
@@ -176,7 +178,8 @@ class GraphAlgo(GraphAlgoInterface):
         """
         mega_list = []
         for n in self.dw_graph.get_all_v().values():
-            mega_list.append(self.connected_component(n.node_id))
+            if n.visited==0:
+                mega_list.append(self.connected_component(n.node_id))
         res = []
         for i in mega_list:
             if i not in res:

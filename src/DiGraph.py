@@ -198,6 +198,11 @@ class Node:
 
     def __lt__(self, other):
         return self.distance < other.distance
+    def __gt__(self, other):
+        return self.distance > other.distance
+
+    def __eq__(self, other):
+        return self.distance == other.distance
 
     def __repr__(self):
         return repr('Key : ' + str(self.node_id))
