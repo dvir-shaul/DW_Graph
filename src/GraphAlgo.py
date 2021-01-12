@@ -39,13 +39,6 @@ class GraphAlgo(GraphAlgoInterface):
             with open(file_name, "r") as f:
                 dict_graph = json.load(f)
                 dw_graph1 = DiGraph()
-                #self.dw_graph.nodes = {}
-                #self.dw_graph.all_in_edges_of_node = {}
-                #self.dw_graph.all_out_edges_of_node = {}
-                #self.dw_graph.mode_changes = 0
-
-                #for nodes in dict_graph["Nodes"]:
-                # dw_graph.add_node(nodes["id"], nodes["pos"])
                 for nodes in dict_graph["Nodes"]:
                     try:
                         position = (nodes["pos"]).split(",")  # Give a string of the position
@@ -78,7 +71,8 @@ class GraphAlgo(GraphAlgoInterface):
         nodes = []
         edges = []
         for k, v in self.dw_graph.get_all_v().items():
-            a_node = {"pos": 0, "id": k}
+            k1 = self.dw_graph.get_nodes(k)
+            a_node = {"pos": k1.position, "id": k}
             nodes.append(a_node)
             for edge in self.dw_graph.all_out_edges_of_node(k).values():
                 an_edge = {"src": edge.src, "w": edge.weight, "dest": edge.dest}
