@@ -1,5 +1,18 @@
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Directed.svg/1024px-Directed.svg.png)
+
+
 # Description
-The first part of the project is based on a directed weighted graph implementation,
+This is a project given by Ariel university, the purpose is to implement a directed weighted graph.
+
+# Implementation
+
+The implementation of the graph itself was done by using 3 dictionaries,
+A dictionary to keep all nodes, a dictionary to keep the incoming edges from a node 
+and the outgoing edges.
+
+We have also created a class for nodes and edges.
+Below is the list of the methods and their short summary.
+Please look at the code for a more detailed explaination.
 
 # Methods
 | DiGraph  | Use | Run time | 
