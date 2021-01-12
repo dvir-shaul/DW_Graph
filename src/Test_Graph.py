@@ -94,8 +94,11 @@ class TestDiGraph(TestCase):
     def test_graph_maker(self):
         g_algo = GraphAlgo()
         file = '../data/G_30000_240000_2.json'
+        #file = '../data/T0.json'
         g_algo.load_from_json(file)
         #print(g_algo.shortest_path(0,5000))
         print(g_algo.connected_components())
+       # print(g_algo.connected_component(0))
+
 #if __name__ == '__main__':
   #  unittest.main()

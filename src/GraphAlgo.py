@@ -2,6 +2,7 @@ import heapq
 import random
 import sys
 import json
+import datetime
 
 import GraphInterface
 from DiGraph import DiGraph
@@ -19,8 +20,10 @@ class GraphAlgo(GraphAlgoInterface):
     """This abstract class represents an interface of a graph."""
     dw_graph = DiGraph()
 
+
     def __init__(self, graph: DiGraph = None):
         self.dw_graph = graph
+        self.d=0
 
     def get_graph(self) -> GraphInterface:
         """
@@ -161,9 +164,20 @@ class GraphAlgo(GraphAlgoInterface):
         @param id1: The node id
         @return: The list of nodes in the SCC
         """
+
+
         list1 = self.bfs(id1, False)
         list2 = self.bfs(id1, True)
-        return list(set(list1) & set(list2))
+        list3 = []
+        temp=set(list2)
+
+
+        for value in list1 :
+            if value in temp:
+                list3.append(value)
+                self.dw_graph.nodes[value].distance=-10
+
+        return list3
 
     def connected_components(self) -> List[list]:
         """
@@ -171,14 +185,14 @@ class GraphAlgo(GraphAlgoInterface):
         @return: The list all SCC
         """
         mega_list = []
+        counter=0
         for n in self.dw_graph.get_all_v().values():
-            if n.visited==0:
+            if n.distance!=-10:
+                counter=counter+1
                 mega_list.append(self.connected_component(n.node_id))
-        res = []
-        for i in mega_list:
-            if i not in res:
-                res.append(i)
-        return res
+        print(counter)
+        return mega_list
+
 
     def plot_graph(self) -> None:
         """
@@ -231,21 +245,20 @@ class GraphAlgo(GraphAlgoInterface):
             n.visited = False
         queue = [self.dw_graph.nodes[start_node]]
         self.dw_graph.nodes[start_node].visited = True
-
         node_list = [start_node]
         while queue:
             current = queue.pop()
             if not flag:
-                for e in self.dw_graph.all_out_edges_of_node(current.node_id).values():
-                    if not self.dw_graph.nodes[e.dest].visited:
-                        self.dw_graph.nodes[e.dest].visited = True
-                        queue.append(self.dw_graph.nodes[e.dest])
-                        node_list.append(e.dest)
+                for e in self.dw_graph.all_out_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
             else:
-                for e in self.dw_graph.all_in_edges_of_node(current.node_id).values():
-                    if not self.dw_graph.nodes[e.src].visited:
-                        self.dw_graph.nodes[e.src].visited = True
-                        queue.append(self.dw_graph.nodes[e.src])
-                        node_list.append(e.src)
+                for e in self.dw_graph.all_in_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
 
         return node_list
