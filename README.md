@@ -14,6 +14,8 @@ We have also created a class for nodes and edges.
 Below is the list of the methods and their short summary.
 Please look at the code for a more detailed explaination.
 
+![alt text](https://miro.medium.com/max/1027/1*Ud_bNdeWPf4iN1EcydaDFA.png)
+
 # Methods
 | DiGraph  | Use | Run time | 
 | ------------- | ------------- | --------|
