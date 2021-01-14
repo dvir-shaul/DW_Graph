@@ -146,6 +146,7 @@ class GraphAlgo(GraphAlgoInterface):
         if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can't reach
             return math.inf, []
 
+
         path.append(id2)
         current = self.dw_graph.nodes[id2].parent
         self.dw_graph.nodes[id1].parent=-1
