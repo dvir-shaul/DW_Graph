@@ -35,12 +35,12 @@ Please look at the code for a more detailed explanation.
 | Graph_Algo  | Use | Run time | 
 | ------------- | ------------- | --------|
 | get_graph()  | Returns the graph  | O(1) | 
-| load_from_json  | returns a deep copy of the graph | O(V+E) |
-| save_to_json | performs one bfs on a given graph  | O(V+E) | 
-| shortest_path  | check if the graph is strongly connected  | O(n^2) | 
-| connected_component  | returns the shortest path between given nodes.  | O(V+E) | 
-| connected_components  | returns a list of the shortest path  | O(V(V+E)) | 
-| plot_graph  | Saves the graph in json format  | O(V+E) | 
+| load_from_json  | load the graph from json format | O(V+E) |
+| save_to_json | save the graph in json format  | O(V+E) | 
+| shortest_path  | shortest path between two given nodes and a list of the path   | O(n^2) | 
+| connected_component  | returns the strongly connected component which that node is a part of  | O(V+E) | 
+| connected_components  | returns a list of all the strongly connected components  | O(V(V+E)) | 
+| plot_graph  | plot the graph using mathploblib  | O(V+E) | 
 
 
 
