@@ -1,6 +1,5 @@
 from DiGraph import DiGraph
 from GraphAlgo import GraphAlgo
-from Tests import Test_Graph
 
 
 def check():
@@ -40,9 +39,9 @@ def check0():
     g.add_edge(1, 3, 1.9)
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
-    print(g)  # prints the __repr__ (func output)
+    print("rr",g)  # prints the __repr__ (func output)
     print(g.get_all_v())  # prints a dict with all the graph's vertices.
-    print(g.all_in_edges_of_node(1))
+    print("hhh",g.all_in_edges_of_node(1))
     print(g.all_out_edges_of_node(1))
     g_algo = GraphAlgo(g)
     print(g_algo.shortest_path(0, 3))
@@ -68,16 +67,18 @@ def check2():
     """ This function tests the naming, basic testing over A5 json file.
       :return:
       """
-    print("ttttttttt","  start of 2")
     g_algo = GraphAlgo()
     file = '../data/A5'
     g_algo.load_from_json(file)
-    print("yyyyyyy2",g_algo.get_graph())
     g_algo.get_graph().remove_edge(13, 14)
     g_algo.save_to_json(file + "_edited")
     dist, path = g_algo.shortest_path(1, 7)
-    print("tttttttttttt",dist, path)
+    print(dist, path)
     dist, path = g_algo.shortest_path(47, 19)
+    print(dist, path)
+    dist, path = g_algo.shortest_path(20, 2)
+    print(dist, path)
+    dist, path = g_algo.shortest_path(2, 20)
     print(dist, path)
     print(g_algo.connected_component(0))
     print(g_algo.connected_components())
@@ -85,4 +86,4 @@ def check2():
 
 
 if __name__ == '__main__':
-    Test_Graph()
+    check()

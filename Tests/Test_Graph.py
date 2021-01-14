@@ -5,6 +5,11 @@ import unittest
 
 class TestDiGraph(TestCase):
 
+    def test_get_nodes(self):
+        g = DiGraph()
+        g.add_node(0, (23.00, 43))
+        self.assertEqual((23.0, 43), g.get_nodes(0).position)
+
     def test_get_mc(self):
         g = DiGraph()
         g.add_node(0)
@@ -89,5 +94,5 @@ class TestDiGraph(TestCase):
 
         return g;
 
-#if __name__ == '__main__':
-  #  unittest.main()
+if __name__ == '__main__':
+    TestDiGraph()

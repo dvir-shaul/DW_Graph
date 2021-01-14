@@ -1,4 +1,5 @@
 import heapq
+import math
 import random
 import sys
 import json
@@ -115,7 +116,7 @@ class GraphAlgo(GraphAlgoInterface):
         if id1 == id2:
             return 0, [id1]
         if id1 not in self.dw_graph.nodes or id2 not in self.dw_graph.nodes:
-            return -1, []
+            return math.inf, []
 
         for n in self.dw_graph.get_all_v().values():  # Set all distance to be max value.
             if n.node_id != id1:
@@ -124,10 +125,7 @@ class GraphAlgo(GraphAlgoInterface):
         path = []
         min_heap=[]
         self.dw_graph.nodes[id1].distance = 0
-        #min_heap = [(n.distance, n) for n in
-        #            self.dw_graph.get_all_v().values()]  # Create ordered pairs in the min heap.
         heapq.heappush(min_heap,(self.dw_graph.nodes[id1].distance,self.dw_graph.nodes[id1]))
-        #heapq.heapify(min_heap)  # heapify to maintain the minimum
 
         while len(min_heap):
             node = heapq.heappop(min_heap)  # pop the smallest item
@@ -143,15 +141,14 @@ class GraphAlgo(GraphAlgoInterface):
 
                         heapq.heappush(min_heap,(self.dw_graph.nodes[neighbour.dest].distance,
                                          self.dw_graph.nodes[neighbour.dest]))  # add to priority queue
-                        #heapq.heapify(min_heap)  # Heapify min.
                         self.dw_graph.nodes[neighbour.dest].parent = current.node_id  # Update parent
 
         if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can't reach
-            return -1, []
+            return math.inf, []
 
         path.append(id2)
         current = self.dw_graph.nodes[id2].parent
-
+        self.dw_graph.nodes[id1].parent=-1
         while current != -1:  # Traverse backwards until parent is -1
             path.append(current)
             current = self.dw_graph.nodes[current].parent
@@ -164,19 +161,19 @@ class GraphAlgo(GraphAlgoInterface):
         @param id1: The node id
         @return: The list of nodes in the SCC
         """
+        list1 = []
+        list2 = []
+        if id1 in self.dw_graph.nodes:
+            list1 = self.bfs(id1, False)
+            list2 = self.bfs(id1, True)
 
-
-        list1 = self.bfs(id1, False)
-        list2 = self.bfs(id1, True)
         list3 = []
         temp=set(list2)
-
-
         for value in list1 :
             if value in temp:
                 list3.append(value)
                 self.dw_graph.nodes[value].distance=-10
-
+        list3.sort()
         return list3
 
     def connected_components(self) -> List[list]:
@@ -184,13 +181,12 @@ class GraphAlgo(GraphAlgoInterface):
         Finds all the Strongly Connected Component(SCC) in the graph.
         @return: The list all SCC
         """
+        for n in self.dw_graph.get_all_v().values():
+            n.distance=0.0
         mega_list = []
-        counter=0
         for n in self.dw_graph.get_all_v().values():
             if n.distance!=-10:
-                counter=counter+1
                 mega_list.append(self.connected_component(n.node_id))
-        print(counter)
         return mega_list
 
 

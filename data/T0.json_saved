@@ -28,19 +28,19 @@
     ],
     "Nodes": [
         {
-            "pos": 0,
+            "pos": null,
             "id": 0
         },
         {
-            "pos": 0,
+            "pos": null,
             "id": 1
         },
         {
-            "pos": 0,
+            "pos": null,
             "id": 2
         },
         {
-            "pos": 0,
+            "pos": null,
             "id": 3
         }
     ]
