@@ -17,6 +17,14 @@ Please look at the code for a more detailed explanation.
 ![alt text](https://miro.medium.com/max/1027/1*Ud_bNdeWPf4iN1EcydaDFA.png)
 
 # Methods
+DiGraph pydoc : 
+
+https://sylbris.github.io/DW_Graph/docs/DiGraph.html
+
+GraphAlgo pydoc : 
+
+https://sylbris.github.io/DW_Graph/docs/GraphAlgo.html
+
 | DiGraph  | Use | Run time | 
 | ------------- | ------------- | --------|
 | repr() | prints the graph  | O(V+E) | 
