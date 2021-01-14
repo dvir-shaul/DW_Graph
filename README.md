@@ -12,15 +12,16 @@ and the outgoing edges.
 
 We have also created a class for nodes and edges.
 Below is the list of the methods and their short summary.
-Please look at the code for a more detailed explaination.
+Please look at the code for a more detailed explanation.
 
 ![alt text](https://miro.medium.com/max/1027/1*Ud_bNdeWPf4iN1EcydaDFA.png)
 
 # Methods
 | DiGraph  | Use | Run time | 
 | ------------- | ------------- | --------|
-| v_size() | returns amount of nodes  | O(n^2) | 
-| e_size()  | returns amount of edges  | O(n^2) | 
+| repr() | prints the graph  | O(V+E) | 
+| v_size() | returns amount of nodes  | O(1) | 
+| e_size()  | returns amount of edges  | O(1) | 
 | get_all_v  | gets the node  | O(1) |
 | all_in_edges_of_node | get the edge  | O(1) | 
 | all_out_edges_of_node  | add the node to the graph  | O(1) | 
@@ -34,12 +35,14 @@ Please look at the code for a more detailed explaination.
 | Graph_Algo  | Use | Run time | 
 | ------------- | ------------- | --------|
 | get_graph()  | Returns the graph  | O(1) | 
-| load_from_json  | returns a deep copy of the graph | O(n^2) |
-| save_to_json | performs one bfs on a given graph  | O(V+E) | 
-| shortest_path  | check if the graph is strongly connected  | O(n^2) | 
-| connected_component  | returns the shortest path between given nodes.  | O(V+E) | 
-| connected_components  | returns a list of the shortest path  | O(V+E) | 
-| plot_graph  | Saves the graph in json format  | O(V+E) | 
+| load_from_json  | load the graph from json format | O(V+E) |
+| save_to_json | save the graph in json format  | O(V+E) | 
+| shortest_path  | shortest path between two given nodes and a list of the path   | O(n^2) | 
+| connected_component  | returns the strongly connected component which that node is a part of  | O(V+E) | 
+| connected_components  | returns a list of all the strongly connected components  | O(V(V+E)) | 
+| plot_graph  | plot the graph using mathploblib  | O(V+E) | 
+
+
 
 
 # Installation
