@@ -49,6 +49,9 @@ class GraphAlgo(GraphAlgoInterface):
                     except KeyError:
                         id = nodes["id"]  # Give a the node id
                         dw_graph1.add_node(id, None)
+                    except AttributeError:
+                        id = nodes["id"]  # Give a the node id
+                        dw_graph1.add_node(id, None)
 
                 for edges in dict_graph["Edges"]:
                     src = edges["src"]

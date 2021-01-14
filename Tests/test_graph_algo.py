@@ -7,7 +7,6 @@ from GraphAlgo import GraphAlgo
 
 class testGraphAlgo(TestCase):
 
-
     def test_load_and_save_from_json1(self):
         g = DiGraph()
         ga = GraphAlgo(g)
@@ -31,10 +30,10 @@ class testGraphAlgo(TestCase):
         # assert for all nodes are the same
         self.assertTrue(g.get_all_v() == ga.get_graph().get_all_v())
         g.remove_node(0)
-        self.assertTrue(g.nodes == ga.get_graph().nodes)
+        self.assertFalse(g.nodes == ga.get_graph().nodes)
         # assert for all changes were the same amount
-        self.assertTrue(g.get_mc() == ga.get_graph().get_mc())
-        self.assertTrue(g.nodes_on_graph == ga.get_graph().nodes_on_graph)
+        self.assertFalse(g.get_mc() == ga.get_graph().get_mc())
+        self.assertFalse(g.nodes_on_graph == ga.get_graph().nodes_on_graph)
 
     def test_connected_component_of_one(self):
         g = DiGraph()

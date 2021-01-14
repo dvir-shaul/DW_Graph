@@ -13,20 +13,10 @@ class DiGraph(GraphInteface):
         self.edges_out = {}
 
     def __repr__(self):
-        lines = 'Nodes: {'
-        for key in self.nodes:
-            lines += ' ' + str(key) + ' ,'
-        lines += ' }\n'
-
-        lines += 'EdgesOut: {'
-        for key, value in self.edges_out.items():
-            print('key ' + str(key))
-            print('value' + str(value))
-
-            lines += ' ' + str(key) + ' : '
-            for neighbour in self.edges_out[key]:
-                lines += ' ' + str(neighbour) + ' ,'
-        lines += ' } '
+        lines = 'Graph:  |V|='
+        lines += self.nodes_on_graph.__repr__()
+        lines += ' , |E|='
+        lines += self.edges_on_graph.__repr__()
 
         return lines
 
@@ -94,6 +84,8 @@ class DiGraph(GraphInteface):
             self.edges_in[id2].update({id1: e})
             self.edges_on_graph += 1
             self.mode_changes += 1
+            self.get_nodes(id1).out_e += 1
+            self.get_nodes(id2).in_e += 1
             return True
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
@@ -155,6 +147,9 @@ class DiGraph(GraphInteface):
             del self.edges_in[node_id2][node_id1]
             self.mode_changes += 1
             self.edges_on_graph -= 1
+            self.get_nodes(node_id1).out_e -= 1
+            self.get_nodes(node_id2).in_e -= 1
+
             return True
 
         except KeyError:
@@ -201,9 +196,12 @@ class Node:
         self.visited = visited
         self.parent = parent
         self.position = position
+        self.in_e = 0
+        self.out_e = 0
 
     def __lt__(self, other):
         return self.distance < other.distance
+
     def __gt__(self, other):
         return self.distance > other.distance
 
@@ -211,4 +209,4 @@ class Node:
         return self.distance == other.distance
 
     def __repr__(self):
-        return repr('Key : ' + str(self.node_id))
+        return repr(str(self.node_id) + ': |edges out| ' + str(self.out_e) + ' |edges in| ' + str(self.in_e))
