@@ -94,6 +94,10 @@ class GraphAlgo(GraphAlgoInterface):
     def shortest_path(self, id1: int, id2: int) -> (float, list):
         """
         Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm
+        We set the distance to be inf for all nodes except the start node.
+        We iterate over the graph and update each nodes distance .
+        O(V+E)
+
         @param id1: The start node id
         @param id2: The end node id
         @return: The distance of the path, the path as a list
@@ -159,6 +163,10 @@ class GraphAlgo(GraphAlgoInterface):
     def connected_component(self, id1: int) -> list:
         """
         Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+        For each node in the graph we perform a BFS from that node, then we perform
+        BFS only the graph is inverted, the intersection of lists will represent the
+        strongly connected component.
+        O(V+E)
         @param id1: The node id
         @return: The list of nodes in the SCC
         """
@@ -180,6 +188,11 @@ class GraphAlgo(GraphAlgoInterface):
     def connected_components(self) -> List[list]:
         """
         Finds all the Strongly Connected Component(SCC) in the graph.
+        We iterate over the graph and perform SCC for each node.
+        if that node was put in a connected component change its distance to be -10,
+        Thus only we encounter a node that has a distance not -10 check for its SCC.
+        O(V(V+E))
+
         @return: The list all SCC
         """
         for n in self.dw_graph.get_all_v().values():
@@ -237,6 +250,8 @@ class GraphAlgo(GraphAlgoInterface):
     def bfs(self, start_node: int, flag: bool) -> bool:
         """
         Performs breathd first search on the graph.
+        if flag is set to true we perform BFS as if the graph if inverted.
+        Otherwise BFS is run normally.
         """
         for n in self.dw_graph.get_all_v().values():
             n.visited = False
