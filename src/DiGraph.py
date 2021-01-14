@@ -177,6 +177,9 @@ class DiGraph(GraphInteface):
 
 
 class Edge:
+    """
+    This is a class representing the edges in the graph.
+    """
     def __init__(self, src, dest, weight):
         self.src = src
         self.dest = dest
@@ -189,6 +192,9 @@ class Edge:
 
 
 class Node:
+    """
+    This is a class representing the nodes in the graph.
+    """
     def __init__(self, node_id, distance, visited, parent, position):
         self.node_id = node_id
         self.distance = distance

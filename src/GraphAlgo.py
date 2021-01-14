@@ -3,18 +3,15 @@ import math
 import random
 import sys
 import json
-import datetime
+
 
 import GraphInterface
 from DiGraph import DiGraph
-from DiGraph import Edge
-from DiGraph import Node
-from GraphInterface import GraphInteface
 
 from GraphAlgoInterface import GraphAlgoInterface
 from typing import List
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 
 class GraphAlgo(GraphAlgoInterface):
@@ -247,7 +244,7 @@ class GraphAlgo(GraphAlgoInterface):
         plt.title("The title of the graph")
         plt.show()
 
-    def bfs(self, start_node: int, flag: bool) -> bool:
+    def bfs(self, start_node: int, flag: bool) :
         """
         Performs breathd first search on the graph.
         if flag is set to true we perform BFS as if the graph if inverted.

@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>GraphAlgo API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>GraphAlgo</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import heapq
+import math
+import random
+import sys
+import json
+
+
+import GraphInterface
+from DiGraph import DiGraph
+
+from GraphAlgoInterface import GraphAlgoInterface
+from typing import List
+import matplotlib.pyplot as plt
+
+
+
+class GraphAlgo(GraphAlgoInterface):
+    &#34;&#34;&#34;This abstract class represents an interface of a graph.&#34;&#34;&#34;
+    dw_graph = DiGraph()
+
+
+    def __init__(self, graph: DiGraph = None):
+        self.dw_graph = graph
+        self.d=0
+
+    def get_graph(self) -&gt; GraphInterface:
+        &#34;&#34;&#34;
+        :return: the directed graph on which the algorithm works on.
+        &#34;&#34;&#34;
+        return self.dw_graph
+
+    def load_from_json(self, file_name: str) -&gt; bool:
+        &#34;&#34;&#34;
+        Loads a graph from a json file.
+        @param file_name: The path to the json file
+        @returns True if the loading was successful, False o.w.
+        &#34;&#34;&#34;
+
+        try:
+            with open(file_name, &#34;r&#34;) as f:
+                dict_graph = json.load(f)
+                dw_graph1 = DiGraph()
+                for nodes in dict_graph[&#34;Nodes&#34;]:
+                    try:
+                        position = (nodes[&#34;pos&#34;]).split(&#34;,&#34;)  # Give a string of the position
+                        pos_tuple = tuple(float(i) for i in position)
+                        id = nodes[&#34;id&#34;]  # Give a the node id
+                        dw_graph1.add_node(id, pos_tuple)
+                    except KeyError:
+                        id = nodes[&#34;id&#34;]  # Give a the node id
+                        dw_graph1.add_node(id, None)
+
+                for edges in dict_graph[&#34;Edges&#34;]:
+                    src = edges[&#34;src&#34;]
+                    weight = edges[&#34;w&#34;]
+                    dest = edges[&#34;dest&#34;]
+                    dw_graph1.add_edge(src, dest, weight)
+
+                self.dw_graph = dw_graph1
+                return True
+
+        except IOError as e:
+            print(e)
+            return False
+
+    def save_to_json(self, file_name: str) -&gt; bool:
+        &#34;&#34;&#34;
+        Saves the graph in JSON format to a file
+        @param file_name: The path to the out file
+        @return: True if the save was successful, Flase o.w.
+        &#34;&#34;&#34;
+        nodes = []
+        edges = []
+        for k, v in self.dw_graph.get_all_v().items():
+            k1 = self.dw_graph.get_nodes(k)
+            a_node = {&#34;pos&#34;: k1.position, &#34;id&#34;: k}
+            nodes.append(a_node)
+            for edge in self.dw_graph.all_out_edges_of_node(k).values():
+                an_edge = {&#34;src&#34;: edge.src, &#34;w&#34;: edge.weight, &#34;dest&#34;: edge.dest}
+                edges.append(an_edge)
+        new_graph = {&#34;Edges&#34;: edges, &#34;Nodes&#34;: nodes}
+        try:
+            with open(file_name, &#34;w&#34;) as f:
+                json.dump(new_graph, indent=4, fp=f)
+            return True
+
+        except Exception as e:
+            print(e)
+        return False
+
+    def shortest_path(self, id1: int, id2: int) -&gt; (float, list):
+        &#34;&#34;&#34;
+        Returns the shortest path from node id1 to node id2 using Dijkstra&#39;s Algorithm
+        We set the distance to be inf for all nodes except the start node.
+        We iterate over the graph and update each nodes distance .
+        O(V+E)
+
+        @param id1: The start node id
+        @param id2: The end node id
+        @return: The distance of the path, the path as a list
+        Example:
+#      &gt;&gt;&gt; from GraphAlgo import GraphAlgo
+#       &gt;&gt;&gt; g_algo = GraphAlgo()
+#        &gt;&gt;&gt; g_algo.addNode(0)
+#        &gt;&gt;&gt; g_algo.addNode(1)
+#        &gt;&gt;&gt; g_algo.addNode(2)
+#        &gt;&gt;&gt; g_algo.addEdge(0,1,1)
+#        &gt;&gt;&gt; g_algo.addEdge(1,2,4)
+#        &gt;&gt;&gt; g_algo.shortestPath(0,1)
+#        (1, [0, 1])
+#        &gt;&gt;&gt; g_algo.shortestPath(0,2)
+#        (5, [0, 1, 2])
+        More info:
+        https://en.wikipedia.org/wiki/Dijkstra&#39;s_algorithm
+        &#34;&#34;&#34;
+
+        if id1 == id2:
+            return 0, [id1]
+        if id1 not in self.dw_graph.nodes or id2 not in self.dw_graph.nodes:
+            return math.inf, []
+
+        for n in self.dw_graph.get_all_v().values():  # Set all distance to be max value.
+            if n.node_id != id1:
+                n.distance = sys.maxsize
+                n.visited = 0
+        path = []
+        min_heap=[]
+        self.dw_graph.nodes[id1].distance = 0
+        heapq.heappush(min_heap,(self.dw_graph.nodes[id1].distance,self.dw_graph.nodes[id1]))
+
+        while len(min_heap):
+            node = heapq.heappop(min_heap)  # pop the smallest item
+            current = node[1]  # Get node from tuples
+            current.visited = 1  # Set the node to visited
+
+            for neighbour in self.dw_graph.all_out_edges_of_node(current.node_id).values():  # Get neighbours
+                if self.dw_graph.nodes[neighbour.dest].visited == 0:  # if we didn&#39;t visit this neighbour
+                    new_dist = current.distance + neighbour.weight  # Set new distance
+
+                    if self.dw_graph.nodes[neighbour.dest].distance &gt; new_dist:  # If new distance is smaller , update it.
+                        self.dw_graph.nodes[neighbour.dest].distance = new_dist
+
+                        heapq.heappush(min_heap,(self.dw_graph.nodes[neighbour.dest].distance,
+                                         self.dw_graph.nodes[neighbour.dest]))  # add to priority queue
+                        self.dw_graph.nodes[neighbour.dest].parent = current.node_id  # Update parent
+
+        if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can&#39;t reach
+            return math.inf, []
+
+
+        path.append(id2)
+        current = self.dw_graph.nodes[id2].parent
+        self.dw_graph.nodes[id1].parent=-1
+        while current != -1:  # Traverse backwards until parent is -1
+            path.append(current)
+            current = self.dw_graph.nodes[current].parent
+        path.reverse()
+        return self.dw_graph.nodes[id2].distance, path
+
+    def connected_component(self, id1: int) -&gt; list:
+        &#34;&#34;&#34;
+        Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+        For each node in the graph we perform a BFS from that node, then we perform
+        BFS only the graph is inverted, the intersection of lists will represent the
+        strongly connected component.
+        O(V+E)
+        @param id1: The node id
+        @return: The list of nodes in the SCC
+        &#34;&#34;&#34;
+        list1 = []
+        list2 = []
+        if id1 in self.dw_graph.nodes:
+            list1 = self.bfs(id1, False)
+            list2 = self.bfs(id1, True)
+
+        list3 = []
+        temp=set(list2)
+        for value in list1 :
+            if value in temp:
+                list3.append(value)
+                self.dw_graph.nodes[value].distance=-10
+        list3.sort()
+        return list3
+
+    def connected_components(self) -&gt; List[list]:
+        &#34;&#34;&#34;
+        Finds all the Strongly Connected Component(SCC) in the graph.
+        We iterate over the graph and perform SCC for each node.
+        if that node was put in a connected component change its distance to be -10,
+        Thus only we encounter a node that has a distance not -10 check for its SCC.
+        O(V(V+E))
+
+        @return: The list all SCC
+        &#34;&#34;&#34;
+        for n in self.dw_graph.get_all_v().values():
+            n.distance=0.0
+        mega_list = []
+        for n in self.dw_graph.get_all_v().values():
+            if n.distance!=-10:
+                mega_list.append(self.connected_component(n.node_id))
+        return mega_list
+
+
+    def plot_graph(self) -&gt; None:
+        &#34;&#34;&#34;
+        Plots the graph.
+        If the nodes have a position, the nodes will be placed there.
+        Otherwise, they will be placed in a random but elegant manner.
+        @return: None
+        &#34;&#34;&#34;
+
+        nodes_on_graph = self.dw_graph.get_all_v()
+        for k, v in nodes_on_graph.items():
+            if v.position is None:
+                x_rand = random.uniform(0.5, self.dw_graph.v_size())
+                y_rand = random.uniform(0.5, self.dw_graph.v_size())
+                v.position = (x_rand, y_rand)
+        x_vals = []
+        y_vals = []
+        n = list(nodes_on_graph.keys())
+        for k, v in nodes_on_graph.items():  # draw nodes
+            x_vals.append(v.position[0])
+            y_vals.append(v.position[1])
+
+        fig, ax = plt.subplots()
+        plt.plot(x_vals, y_vals, &#39;ro&#39;, markersize=5, data=&#34;d&#34;)
+
+        for p, txt in enumerate(n):
+            ax.annotate(n[p], (x_vals[p]+0.00003, y_vals[p]),  color=&#39;g&#39;)
+
+        for n in nodes_on_graph:
+            n1 = self.dw_graph.get_nodes(n)
+            x = n1.position[0]
+            y = n1.position[1]
+            for r in self.dw_graph.all_out_edges_of_node(n):
+                dx = self.dw_graph.get_nodes(r).position[0]
+                dy = self.dw_graph.get_nodes(r).position[1]
+                ax.quiver(x, y, dx-x, dy-y, angles=&#39;xy&#39;, scale_units=&#39;xy&#39;, scale=1)
+                #plt.arrow(x, y, dx - x, dy - y, head_width=0.0009, width=0.00005, length_includes_head=True)
+
+
+        plt.xlabel(&#34;x axis &#34;)
+        plt.ylabel(&#34;y axis &#34;)
+        plt.title(&#34;The title of the graph&#34;)
+        plt.show()
+
+    def bfs(self, start_node: int, flag: bool) :
+        &#34;&#34;&#34;
+        Performs breathd first search on the graph.
+        if flag is set to true we perform BFS as if the graph if inverted.
+        Otherwise BFS is run normally.
+        &#34;&#34;&#34;
+        for n in self.dw_graph.get_all_v().values():
+            n.visited = False
+        queue = [self.dw_graph.nodes[start_node]]
+        self.dw_graph.nodes[start_node].visited = True
+        node_list = [start_node]
+        while queue:
+            current = queue.pop()
+            if not flag:
+                for e in self.dw_graph.all_out_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
+            else:
+                for e in self.dw_graph.all_in_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
+
+        return node_list</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="GraphAlgo.GraphAlgo"><code class="flex name class">
+<span>class <span class="ident">GraphAlgo</span></span>
+<span>(</span><span>graph: DiGraph.DiGraph = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This abstract class represents an interface of a graph.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GraphAlgo(GraphAlgoInterface):
+    &#34;&#34;&#34;This abstract class represents an interface of a graph.&#34;&#34;&#34;
+    dw_graph = DiGraph()
+
+
+    def __init__(self, graph: DiGraph = None):
+        self.dw_graph = graph
+        self.d=0
+
+    def get_graph(self) -&gt; GraphInterface:
+        &#34;&#34;&#34;
+        :return: the directed graph on which the algorithm works on.
+        &#34;&#34;&#34;
+        return self.dw_graph
+
+    def load_from_json(self, file_name: str) -&gt; bool:
+        &#34;&#34;&#34;
+        Loads a graph from a json file.
+        @param file_name: The path to the json file
+        @returns True if the loading was successful, False o.w.
+        &#34;&#34;&#34;
+
+        try:
+            with open(file_name, &#34;r&#34;) as f:
+                dict_graph = json.load(f)
+                dw_graph1 = DiGraph()
+                for nodes in dict_graph[&#34;Nodes&#34;]:
+                    try:
+                        position = (nodes[&#34;pos&#34;]).split(&#34;,&#34;)  # Give a string of the position
+                        pos_tuple = tuple(float(i) for i in position)
+                        id = nodes[&#34;id&#34;]  # Give a the node id
+                        dw_graph1.add_node(id, pos_tuple)
+                    except KeyError:
+                        id = nodes[&#34;id&#34;]  # Give a the node id
+                        dw_graph1.add_node(id, None)
+
+                for edges in dict_graph[&#34;Edges&#34;]:
+                    src = edges[&#34;src&#34;]
+                    weight = edges[&#34;w&#34;]
+                    dest = edges[&#34;dest&#34;]
+                    dw_graph1.add_edge(src, dest, weight)
+
+                self.dw_graph = dw_graph1
+                return True
+
+        except IOError as e:
+            print(e)
+            return False
+
+    def save_to_json(self, file_name: str) -&gt; bool:
+        &#34;&#34;&#34;
+        Saves the graph in JSON format to a file
+        @param file_name: The path to the out file
+        @return: True if the save was successful, Flase o.w.
+        &#34;&#34;&#34;
+        nodes = []
+        edges = []
+        for k, v in self.dw_graph.get_all_v().items():
+            k1 = self.dw_graph.get_nodes(k)
+            a_node = {&#34;pos&#34;: k1.position, &#34;id&#34;: k}
+            nodes.append(a_node)
+            for edge in self.dw_graph.all_out_edges_of_node(k).values():
+                an_edge = {&#34;src&#34;: edge.src, &#34;w&#34;: edge.weight, &#34;dest&#34;: edge.dest}
+                edges.append(an_edge)
+        new_graph = {&#34;Edges&#34;: edges, &#34;Nodes&#34;: nodes}
+        try:
+            with open(file_name, &#34;w&#34;) as f:
+                json.dump(new_graph, indent=4, fp=f)
+            return True
+
+        except Exception as e:
+            print(e)
+        return False
+
+    def shortest_path(self, id1: int, id2: int) -&gt; (float, list):
+        &#34;&#34;&#34;
+        Returns the shortest path from node id1 to node id2 using Dijkstra&#39;s Algorithm
+        We set the distance to be inf for all nodes except the start node.
+        We iterate over the graph and update each nodes distance .
+        O(V+E)
+
+        @param id1: The start node id
+        @param id2: The end node id
+        @return: The distance of the path, the path as a list
+        Example:
+#      &gt;&gt;&gt; from GraphAlgo import GraphAlgo
+#       &gt;&gt;&gt; g_algo = GraphAlgo()
+#        &gt;&gt;&gt; g_algo.addNode(0)
+#        &gt;&gt;&gt; g_algo.addNode(1)
+#        &gt;&gt;&gt; g_algo.addNode(2)
+#        &gt;&gt;&gt; g_algo.addEdge(0,1,1)
+#        &gt;&gt;&gt; g_algo.addEdge(1,2,4)
+#        &gt;&gt;&gt; g_algo.shortestPath(0,1)
+#        (1, [0, 1])
+#        &gt;&gt;&gt; g_algo.shortestPath(0,2)
+#        (5, [0, 1, 2])
+        More info:
+        https://en.wikipedia.org/wiki/Dijkstra&#39;s_algorithm
+        &#34;&#34;&#34;
+
+        if id1 == id2:
+            return 0, [id1]
+        if id1 not in self.dw_graph.nodes or id2 not in self.dw_graph.nodes:
+            return math.inf, []
+
+        for n in self.dw_graph.get_all_v().values():  # Set all distance to be max value.
+            if n.node_id != id1:
+                n.distance = sys.maxsize
+                n.visited = 0
+        path = []
+        min_heap=[]
+        self.dw_graph.nodes[id1].distance = 0
+        heapq.heappush(min_heap,(self.dw_graph.nodes[id1].distance,self.dw_graph.nodes[id1]))
+
+        while len(min_heap):
+            node = heapq.heappop(min_heap)  # pop the smallest item
+            current = node[1]  # Get node from tuples
+            current.visited = 1  # Set the node to visited
+
+            for neighbour in self.dw_graph.all_out_edges_of_node(current.node_id).values():  # Get neighbours
+                if self.dw_graph.nodes[neighbour.dest].visited == 0:  # if we didn&#39;t visit this neighbour
+                    new_dist = current.distance + neighbour.weight  # Set new distance
+
+                    if self.dw_graph.nodes[neighbour.dest].distance &gt; new_dist:  # If new distance is smaller , update it.
+                        self.dw_graph.nodes[neighbour.dest].distance = new_dist
+
+                        heapq.heappush(min_heap,(self.dw_graph.nodes[neighbour.dest].distance,
+                                         self.dw_graph.nodes[neighbour.dest]))  # add to priority queue
+                        self.dw_graph.nodes[neighbour.dest].parent = current.node_id  # Update parent
+
+        if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can&#39;t reach
+            return math.inf, []
+
+
+        path.append(id2)
+        current = self.dw_graph.nodes[id2].parent
+        self.dw_graph.nodes[id1].parent=-1
+        while current != -1:  # Traverse backwards until parent is -1
+            path.append(current)
+            current = self.dw_graph.nodes[current].parent
+        path.reverse()
+        return self.dw_graph.nodes[id2].distance, path
+
+    def connected_component(self, id1: int) -&gt; list:
+        &#34;&#34;&#34;
+        Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+        For each node in the graph we perform a BFS from that node, then we perform
+        BFS only the graph is inverted, the intersection of lists will represent the
+        strongly connected component.
+        O(V+E)
+        @param id1: The node id
+        @return: The list of nodes in the SCC
+        &#34;&#34;&#34;
+        list1 = []
+        list2 = []
+        if id1 in self.dw_graph.nodes:
+            list1 = self.bfs(id1, False)
+            list2 = self.bfs(id1, True)
+
+        list3 = []
+        temp=set(list2)
+        for value in list1 :
+            if value in temp:
+                list3.append(value)
+                self.dw_graph.nodes[value].distance=-10
+        list3.sort()
+        return list3
+
+    def connected_components(self) -&gt; List[list]:
+        &#34;&#34;&#34;
+        Finds all the Strongly Connected Component(SCC) in the graph.
+        We iterate over the graph and perform SCC for each node.
+        if that node was put in a connected component change its distance to be -10,
+        Thus only we encounter a node that has a distance not -10 check for its SCC.
+        O(V(V+E))
+
+        @return: The list all SCC
+        &#34;&#34;&#34;
+        for n in self.dw_graph.get_all_v().values():
+            n.distance=0.0
+        mega_list = []
+        for n in self.dw_graph.get_all_v().values():
+            if n.distance!=-10:
+                mega_list.append(self.connected_component(n.node_id))
+        return mega_list
+
+
+    def plot_graph(self) -&gt; None:
+        &#34;&#34;&#34;
+        Plots the graph.
+        If the nodes have a position, the nodes will be placed there.
+        Otherwise, they will be placed in a random but elegant manner.
+        @return: None
+        &#34;&#34;&#34;
+
+        nodes_on_graph = self.dw_graph.get_all_v()
+        for k, v in nodes_on_graph.items():
+            if v.position is None:
+                x_rand = random.uniform(0.5, self.dw_graph.v_size())
+                y_rand = random.uniform(0.5, self.dw_graph.v_size())
+                v.position = (x_rand, y_rand)
+        x_vals = []
+        y_vals = []
+        n = list(nodes_on_graph.keys())
+        for k, v in nodes_on_graph.items():  # draw nodes
+            x_vals.append(v.position[0])
+            y_vals.append(v.position[1])
+
+        fig, ax = plt.subplots()
+        plt.plot(x_vals, y_vals, &#39;ro&#39;, markersize=5, data=&#34;d&#34;)
+
+        for p, txt in enumerate(n):
+            ax.annotate(n[p], (x_vals[p]+0.00003, y_vals[p]),  color=&#39;g&#39;)
+
+        for n in nodes_on_graph:
+            n1 = self.dw_graph.get_nodes(n)
+            x = n1.position[0]
+            y = n1.position[1]
+            for r in self.dw_graph.all_out_edges_of_node(n):
+                dx = self.dw_graph.get_nodes(r).position[0]
+                dy = self.dw_graph.get_nodes(r).position[1]
+                ax.quiver(x, y, dx-x, dy-y, angles=&#39;xy&#39;, scale_units=&#39;xy&#39;, scale=1)
+                #plt.arrow(x, y, dx - x, dy - y, head_width=0.0009, width=0.00005, length_includes_head=True)
+
+
+        plt.xlabel(&#34;x axis &#34;)
+        plt.ylabel(&#34;y axis &#34;)
+        plt.title(&#34;The title of the graph&#34;)
+        plt.show()
+
+    def bfs(self, start_node: int, flag: bool) :
+        &#34;&#34;&#34;
+        Performs breathd first search on the graph.
+        if flag is set to true we perform BFS as if the graph if inverted.
+        Otherwise BFS is run normally.
+        &#34;&#34;&#34;
+        for n in self.dw_graph.get_all_v().values():
+            n.visited = False
+        queue = [self.dw_graph.nodes[start_node]]
+        self.dw_graph.nodes[start_node].visited = True
+        node_list = [start_node]
+        while queue:
+            current = queue.pop()
+            if not flag:
+                for e in self.dw_graph.all_out_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
+            else:
+                for e in self.dw_graph.all_in_edges_of_node(current.node_id).keys():
+                    if not self.dw_graph.nodes[e].visited:
+                        self.dw_graph.nodes[e].visited = True
+                        queue.append(self.dw_graph.nodes[e])
+                        node_list.append(e)
+
+        return node_list</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>GraphAlgoInterface.GraphAlgoInterface</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="GraphAlgo.GraphAlgo.dw_graph"><code class="name">var <span class="ident">dw_graph</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="GraphAlgo.GraphAlgo.bfs"><code class="name flex">
+<span>def <span class="ident">bfs</span></span>(<span>self, start_node: int, flag: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs breathd first search on the graph.
+if flag is set to true we perform BFS as if the graph if inverted.
+Otherwise BFS is run normally.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bfs(self, start_node: int, flag: bool) :
+    &#34;&#34;&#34;
+    Performs breathd first search on the graph.
+    if flag is set to true we perform BFS as if the graph if inverted.
+    Otherwise BFS is run normally.
+    &#34;&#34;&#34;
+    for n in self.dw_graph.get_all_v().values():
+        n.visited = False
+    queue = [self.dw_graph.nodes[start_node]]
+    self.dw_graph.nodes[start_node].visited = True
+    node_list = [start_node]
+    while queue:
+        current = queue.pop()
+        if not flag:
+            for e in self.dw_graph.all_out_edges_of_node(current.node_id).keys():
+                if not self.dw_graph.nodes[e].visited:
+                    self.dw_graph.nodes[e].visited = True
+                    queue.append(self.dw_graph.nodes[e])
+                    node_list.append(e)
+        else:
+            for e in self.dw_graph.all_in_edges_of_node(current.node_id).keys():
+                if not self.dw_graph.nodes[e].visited:
+                    self.dw_graph.nodes[e].visited = True
+                    queue.append(self.dw_graph.nodes[e])
+                    node_list.append(e)
+
+    return node_list</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.connected_component"><code class="name flex">
+<span>def <span class="ident">connected_component</span></span>(<span>self, id1: int) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+For each node in the graph we perform a BFS from that node, then we perform
+BFS only the graph is inverted, the intersection of lists will represent the
+strongly connected component.
+O(V+E)
+@param id1: The node id
+@return: The list of nodes in the SCC</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connected_component(self, id1: int) -&gt; list:
+    &#34;&#34;&#34;
+    Finds the Strongly Connected Component(SCC) that node id1 is a part of.
+    For each node in the graph we perform a BFS from that node, then we perform
+    BFS only the graph is inverted, the intersection of lists will represent the
+    strongly connected component.
+    O(V+E)
+    @param id1: The node id
+    @return: The list of nodes in the SCC
+    &#34;&#34;&#34;
+    list1 = []
+    list2 = []
+    if id1 in self.dw_graph.nodes:
+        list1 = self.bfs(id1, False)
+        list2 = self.bfs(id1, True)
+
+    list3 = []
+    temp=set(list2)
+    for value in list1 :
+        if value in temp:
+            list3.append(value)
+            self.dw_graph.nodes[value].distance=-10
+    list3.sort()
+    return list3</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.connected_components"><code class="name flex">
+<span>def <span class="ident">connected_components</span></span>(<span>self) ‑> List[list]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Finds all the Strongly Connected Component(SCC) in the graph.
+We iterate over the graph and perform SCC for each node.
+if that node was put in a connected component change its distance to be -10,
+Thus only we encounter a node that has a distance not -10 check for its SCC.
+O(V(V+E))</p>
+<p>@return: The list all SCC</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connected_components(self) -&gt; List[list]:
+    &#34;&#34;&#34;
+    Finds all the Strongly Connected Component(SCC) in the graph.
+    We iterate over the graph and perform SCC for each node.
+    if that node was put in a connected component change its distance to be -10,
+    Thus only we encounter a node that has a distance not -10 check for its SCC.
+    O(V(V+E))
+
+    @return: The list all SCC
+    &#34;&#34;&#34;
+    for n in self.dw_graph.get_all_v().values():
+        n.distance=0.0
+    mega_list = []
+    for n in self.dw_graph.get_all_v().values():
+        if n.distance!=-10:
+            mega_list.append(self.connected_component(n.node_id))
+    return mega_list</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.get_graph"><code class="name flex">
+<span>def <span class="ident">get_graph</span></span>(<span>self) ‑> <module 'GraphInterface' from 'D:\\Ariel\\Ariel_OOP_2020\\Assignments\\Ex3\\src\\GraphInterface.py'></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: the directed graph on which the algorithm works on.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_graph(self) -&gt; GraphInterface:
+    &#34;&#34;&#34;
+    :return: the directed graph on which the algorithm works on.
+    &#34;&#34;&#34;
+    return self.dw_graph</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.load_from_json"><code class="name flex">
+<span>def <span class="ident">load_from_json</span></span>(<span>self, file_name: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads a graph from a json file.
+@param file_name: The path to the json file
+@returns True if the loading was successful, False o.w.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_from_json(self, file_name: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Loads a graph from a json file.
+    @param file_name: The path to the json file
+    @returns True if the loading was successful, False o.w.
+    &#34;&#34;&#34;
+
+    try:
+        with open(file_name, &#34;r&#34;) as f:
+            dict_graph = json.load(f)
+            dw_graph1 = DiGraph()
+            for nodes in dict_graph[&#34;Nodes&#34;]:
+                try:
+                    position = (nodes[&#34;pos&#34;]).split(&#34;,&#34;)  # Give a string of the position
+                    pos_tuple = tuple(float(i) for i in position)
+                    id = nodes[&#34;id&#34;]  # Give a the node id
+                    dw_graph1.add_node(id, pos_tuple)
+                except KeyError:
+                    id = nodes[&#34;id&#34;]  # Give a the node id
+                    dw_graph1.add_node(id, None)
+
+            for edges in dict_graph[&#34;Edges&#34;]:
+                src = edges[&#34;src&#34;]
+                weight = edges[&#34;w&#34;]
+                dest = edges[&#34;dest&#34;]
+                dw_graph1.add_edge(src, dest, weight)
+
+            self.dw_graph = dw_graph1
+            return True
+
+    except IOError as e:
+        print(e)
+        return False</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.plot_graph"><code class="name flex">
+<span>def <span class="ident">plot_graph</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the graph.
+If the nodes have a position, the nodes will be placed there.
+Otherwise, they will be placed in a random but elegant manner.
+@return: None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_graph(self) -&gt; None:
+    &#34;&#34;&#34;
+    Plots the graph.
+    If the nodes have a position, the nodes will be placed there.
+    Otherwise, they will be placed in a random but elegant manner.
+    @return: None
+    &#34;&#34;&#34;
+
+    nodes_on_graph = self.dw_graph.get_all_v()
+    for k, v in nodes_on_graph.items():
+        if v.position is None:
+            x_rand = random.uniform(0.5, self.dw_graph.v_size())
+            y_rand = random.uniform(0.5, self.dw_graph.v_size())
+            v.position = (x_rand, y_rand)
+    x_vals = []
+    y_vals = []
+    n = list(nodes_on_graph.keys())
+    for k, v in nodes_on_graph.items():  # draw nodes
+        x_vals.append(v.position[0])
+        y_vals.append(v.position[1])
+
+    fig, ax = plt.subplots()
+    plt.plot(x_vals, y_vals, &#39;ro&#39;, markersize=5, data=&#34;d&#34;)
+
+    for p, txt in enumerate(n):
+        ax.annotate(n[p], (x_vals[p]+0.00003, y_vals[p]),  color=&#39;g&#39;)
+
+    for n in nodes_on_graph:
+        n1 = self.dw_graph.get_nodes(n)
+        x = n1.position[0]
+        y = n1.position[1]
+        for r in self.dw_graph.all_out_edges_of_node(n):
+            dx = self.dw_graph.get_nodes(r).position[0]
+            dy = self.dw_graph.get_nodes(r).position[1]
+            ax.quiver(x, y, dx-x, dy-y, angles=&#39;xy&#39;, scale_units=&#39;xy&#39;, scale=1)
+            #plt.arrow(x, y, dx - x, dy - y, head_width=0.0009, width=0.00005, length_includes_head=True)
+
+
+    plt.xlabel(&#34;x axis &#34;)
+    plt.ylabel(&#34;y axis &#34;)
+    plt.title(&#34;The title of the graph&#34;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.save_to_json"><code class="name flex">
+<span>def <span class="ident">save_to_json</span></span>(<span>self, file_name: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves the graph in JSON format to a file
+@param file_name: The path to the out file
+@return: True if the save was successful, Flase o.w.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_to_json(self, file_name: str) -&gt; bool:
+    &#34;&#34;&#34;
+    Saves the graph in JSON format to a file
+    @param file_name: The path to the out file
+    @return: True if the save was successful, Flase o.w.
+    &#34;&#34;&#34;
+    nodes = []
+    edges = []
+    for k, v in self.dw_graph.get_all_v().items():
+        k1 = self.dw_graph.get_nodes(k)
+        a_node = {&#34;pos&#34;: k1.position, &#34;id&#34;: k}
+        nodes.append(a_node)
+        for edge in self.dw_graph.all_out_edges_of_node(k).values():
+            an_edge = {&#34;src&#34;: edge.src, &#34;w&#34;: edge.weight, &#34;dest&#34;: edge.dest}
+            edges.append(an_edge)
+    new_graph = {&#34;Edges&#34;: edges, &#34;Nodes&#34;: nodes}
+    try:
+        with open(file_name, &#34;w&#34;) as f:
+            json.dump(new_graph, indent=4, fp=f)
+        return True
+
+    except Exception as e:
+        print(e)
+    return False</code></pre>
+</details>
+</dd>
+<dt id="GraphAlgo.GraphAlgo.shortest_path"><code class="name flex">
+<span>def <span class="ident">shortest_path</span></span>(<span>self, id1: int, id2: int) ‑> (<class 'float'>, <class 'list'>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm
+We set the distance to be inf for all nodes except the start node.
+We iterate over the graph and update each nodes distance .
+O(V+E)</p>
+<pre><code>    @param id1: The start node id
+    @param id2: The end node id
+    @return: The distance of the path, the path as a list
+    Example:
+</code></pre>
+<h1 id="from-graphalgo-import-graphalgo">&gt;&gt;&gt; from GraphAlgo import GraphAlgo</h1>
+<h1 id="g_algo-graphalgo">&gt;&gt;&gt; g_algo = GraphAlgo()</h1>
+<h1 id="g_algoaddnode0">&gt;&gt;&gt; g_algo.addNode(0)</h1>
+<h1 id="g_algoaddnode1">&gt;&gt;&gt; g_algo.addNode(1)</h1>
+<h1 id="g_algoaddnode2">&gt;&gt;&gt; g_algo.addNode(2)</h1>
+<h1 id="g_algoaddedge011">&gt;&gt;&gt; g_algo.addEdge(0,1,1)</h1>
+<h1 id="g_algoaddedge124">&gt;&gt;&gt; g_algo.addEdge(1,2,4)</h1>
+<h1 id="g_algoshortestpath01">&gt;&gt;&gt; g_algo.shortestPath(0,1)</h1>
+<h1 id="1-0-1">(1, [0, 1])</h1>
+<h1 id="g_algoshortestpath02">&gt;&gt;&gt; g_algo.shortestPath(0,2)</h1>
+<h1 id="5-0-1-2">(5, [0, 1, 2])</h1>
+<pre><code>    More info:
+    &lt;https://en.wikipedia.org/wiki/Dijkstra's_algorithm&gt;
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def shortest_path(self, id1: int, id2: int) -&gt; (float, list):
+        &#34;&#34;&#34;
+        Returns the shortest path from node id1 to node id2 using Dijkstra&#39;s Algorithm
+        We set the distance to be inf for all nodes except the start node.
+        We iterate over the graph and update each nodes distance .
+        O(V+E)
+
+        @param id1: The start node id
+        @param id2: The end node id
+        @return: The distance of the path, the path as a list
+        Example:
+#      &gt;&gt;&gt; from GraphAlgo import GraphAlgo
+#       &gt;&gt;&gt; g_algo = GraphAlgo()
+#        &gt;&gt;&gt; g_algo.addNode(0)
+#        &gt;&gt;&gt; g_algo.addNode(1)
+#        &gt;&gt;&gt; g_algo.addNode(2)
+#        &gt;&gt;&gt; g_algo.addEdge(0,1,1)
+#        &gt;&gt;&gt; g_algo.addEdge(1,2,4)
+#        &gt;&gt;&gt; g_algo.shortestPath(0,1)
+#        (1, [0, 1])
+#        &gt;&gt;&gt; g_algo.shortestPath(0,2)
+#        (5, [0, 1, 2])
+        More info:
+        https://en.wikipedia.org/wiki/Dijkstra&#39;s_algorithm
+        &#34;&#34;&#34;
+
+        if id1 == id2:
+            return 0, [id1]
+        if id1 not in self.dw_graph.nodes or id2 not in self.dw_graph.nodes:
+            return math.inf, []
+
+        for n in self.dw_graph.get_all_v().values():  # Set all distance to be max value.
+            if n.node_id != id1:
+                n.distance = sys.maxsize
+                n.visited = 0
+        path = []
+        min_heap=[]
+        self.dw_graph.nodes[id1].distance = 0
+        heapq.heappush(min_heap,(self.dw_graph.nodes[id1].distance,self.dw_graph.nodes[id1]))
+
+        while len(min_heap):
+            node = heapq.heappop(min_heap)  # pop the smallest item
+            current = node[1]  # Get node from tuples
+            current.visited = 1  # Set the node to visited
+
+            for neighbour in self.dw_graph.all_out_edges_of_node(current.node_id).values():  # Get neighbours
+                if self.dw_graph.nodes[neighbour.dest].visited == 0:  # if we didn&#39;t visit this neighbour
+                    new_dist = current.distance + neighbour.weight  # Set new distance
+
+                    if self.dw_graph.nodes[neighbour.dest].distance &gt; new_dist:  # If new distance is smaller , update it.
+                        self.dw_graph.nodes[neighbour.dest].distance = new_dist
+
+                        heapq.heappush(min_heap,(self.dw_graph.nodes[neighbour.dest].distance,
+                                         self.dw_graph.nodes[neighbour.dest]))  # add to priority queue
+                        self.dw_graph.nodes[neighbour.dest].parent = current.node_id  # Update parent
+
+        if self.dw_graph.nodes[id2].distance == sys.maxsize:  # if the distance is still max value , can&#39;t reach
+            return math.inf, []
+
+
+        path.append(id2)
+        current = self.dw_graph.nodes[id2].parent
+        self.dw_graph.nodes[id1].parent=-1
+        while current != -1:  # Traverse backwards until parent is -1
+            path.append(current)
+            current = self.dw_graph.nodes[current].parent
+        path.reverse()
+        return self.dw_graph.nodes[id2].distance, path</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="GraphAlgo.GraphAlgo" href="#GraphAlgo.GraphAlgo">GraphAlgo</a></code></h4>
+<ul class="">
+<li><code><a title="GraphAlgo.GraphAlgo.bfs" href="#GraphAlgo.GraphAlgo.bfs">bfs</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.connected_component" href="#GraphAlgo.GraphAlgo.connected_component">connected_component</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.connected_components" href="#GraphAlgo.GraphAlgo.connected_components">connected_components</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.dw_graph" href="#GraphAlgo.GraphAlgo.dw_graph">dw_graph</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.get_graph" href="#GraphAlgo.GraphAlgo.get_graph">get_graph</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.load_from_json" href="#GraphAlgo.GraphAlgo.load_from_json">load_from_json</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.plot_graph" href="#GraphAlgo.GraphAlgo.plot_graph">plot_graph</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.save_to_json" href="#GraphAlgo.GraphAlgo.save_to_json">save_to_json</a></code></li>
+<li><code><a title="GraphAlgo.GraphAlgo.shortest_path" href="#GraphAlgo.GraphAlgo.shortest_path">shortest_path</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
