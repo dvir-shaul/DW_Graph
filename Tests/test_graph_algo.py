@@ -45,7 +45,6 @@ class testGraphAlgo(TestCase):
     def test_connected_component(self):
         g = DiGraph()
         ga = GraphAlgo(g)
-        print(ga.connected_component(5))
         g.add_node(0)
         g.add_node(1)
         g.add_node(2)
@@ -131,7 +130,6 @@ class testGraphAlgo(TestCase):
         g.add_edge(3, 4, 5.2)
         g.add_edge(4, 3, 8)
         g.add_edge(0, 5, 5)
-        print(g.all_out_edges_of_node(0))
         ga.plot_graph()
 
     def test_plot(self):
